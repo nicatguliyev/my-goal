@@ -7,6 +7,9 @@ const SearchTextinput = () => {
     return (
         <View style={styles.inputContainer}>
             <View style={styles.wrapper}>
+                <View style={styles.searchIconConatiner}>
+                    <Ionicons name="search" size={24} color="#709ab8" style={{ top: 10, left: 10 }} />
+                </View>
                 <TextInput placeholder="Search the goal" style={styles.textInput} />
             </View>
 
@@ -29,8 +32,10 @@ const styles = StyleSheet.create({
         borderColor: '#709ab8',
         borderWidth: 1,
         padding: 10,
+        paddingLeft: 40,
         borderRadius: 10,
-        flex: 1
+        flex: 1,
+        zIndex: 1
     },
     filterButton: {
         backgroundColor: '#527187',
@@ -45,5 +50,12 @@ const styles = StyleSheet.create({
     wrapper: {
         display: 'flex',
         flex: 1,
+    },
+    searchIconConatiner: {
+        height: 45,
+        width: 40,
+        backgroundColor: 'transparent',
+        zIndex: 2,
+        position: 'absolute'
     }
 });
