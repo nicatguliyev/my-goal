@@ -1,0 +1,49 @@
+import React from "react";
+import { TextInput, StyleSheet, View, Pressable } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
+const SearchTextinput = () => {
+
+    return (
+        <View style={styles.inputContainer}>
+            <View style={styles.wrapper}>
+                <TextInput placeholder="Search the goal" style={styles.textInput} />
+            </View>
+
+            <Pressable style={({ pressed }) => [styles.filterButton, pressed && styles.filteredButtonPressed]}>
+                <Ionicons name="filter" size={24} color="white" />
+            </Pressable>
+
+        </View>
+    );
+}
+
+export default SearchTextinput;
+
+const styles = StyleSheet.create({
+
+    inputContainer: {
+        flexDirection: 'row',
+    },
+    textInput: {
+        borderColor: '#709ab8',
+        borderWidth: 1,
+        padding: 10,
+        borderRadius: 10,
+        flex: 1
+    },
+    filterButton: {
+        backgroundColor: '#527187',
+        justifyContent: 'center',
+        padding: 10,
+        marginLeft: 10,
+        borderRadius: 10,
+    },
+    filteredButtonPressed: {
+        opacity: 0.75
+    },
+    wrapper: {
+        display: 'flex',
+        flex: 1,
+    }
+});
