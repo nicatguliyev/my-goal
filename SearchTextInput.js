@@ -11,6 +11,9 @@ const SearchTextinput = () => {
                     <Ionicons name="search" size={24} color="#709ab8" style={{ top: 10, left: 10 }} />
                 </View>
                 <TextInput placeholder="Search the goal" style={styles.textInput} />
+                <Pressable  style={({ pressed }) => [styles.cancelIconConatiner, pressed && styles.cancelIconConatinerPressed]} onPress={() => {console.log('Cancel')}}>
+                    <Ionicons name="close" size={24} color="#709ab8"  />
+                </Pressable>
             </View>
 
             <Pressable style={({ pressed }) => [styles.filterButton, pressed && styles.filteredButtonPressed]}>
@@ -57,5 +60,21 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         zIndex: 2,
         position: 'absolute'
+    },
+        cancelIconConatiner: {
+        height: 45,
+        width: 45,
+        backgroundColor: 'transparent',
+        zIndex: 2,
+        position: 'absolute',
+        alignItems: 'center',
+        justifyContent: 'center',
+        right: 0,
+    },
+
+       cancelIconConatinerPressed: {
+       backgroundColor: '#527187',
+       opacity: 0.1,
+         borderRadius: 22
     }
 });
