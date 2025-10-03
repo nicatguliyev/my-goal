@@ -2,7 +2,7 @@ import React from "react";
 import { TextInput, StyleSheet, View, Pressable, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const SearchTextinput = () => {
+const SearchTextinput = ({modalVisible}) => {
 
     return (
         <View style={styles.inputContainer}>
