@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, StyleSheet, View, Pressable } from "react-native";
+import { TextInput, StyleSheet, View, Pressable, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 const SearchTextinput = () => {
@@ -11,12 +11,14 @@ const SearchTextinput = () => {
                     <Ionicons name="search" size={24} color="#709ab8" style={{ top: 10, left: 10 }} />
                 </View>
                 <TextInput placeholder="Search the goal" style={styles.textInput} />
-                <Pressable  style={({ pressed }) => [styles.cancelIconConatiner, pressed && styles.cancelIconConatinerPressed]} onPress={() => {console.log('Cancel')}}>
-                    <Ionicons name="close" size={24} color="#709ab8"  />
+                <Pressable style={({ pressed }) => [styles.cancelIconConatiner, pressed && styles.cancelIconConatinerPressed]} onPress={() => { console.log('Cancel') }}>
+                    <Ionicons name="close" size={24} color="#709ab8" />
                 </Pressable>
             </View>
-
             <Pressable style={({ pressed }) => [styles.filterButton, pressed && styles.filteredButtonPressed]}>
+                <View style={styles.notificationView}>
+                    <Text style={styles.notificationText}>3</Text>
+                </View>
                 <Ionicons name="filter" size={24} color="white" />
             </Pressable>
 
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
         zIndex: 2,
         position: 'absolute'
     },
-        cancelIconConatiner: {
+    cancelIconConatiner: {
         height: 45,
         width: 45,
         backgroundColor: 'transparent',
@@ -72,9 +74,25 @@ const styles = StyleSheet.create({
         right: 0,
     },
 
-       cancelIconConatinerPressed: {
-       backgroundColor: '#527187',
-       opacity: 0.1,
-         borderRadius: 22
+    cancelIconConatinerPressed: {
+        backgroundColor: '#527187',
+        opacity: 0.1,
+        borderRadius: 22
+    },
+    notificationView: {
+        height: 20,
+        width: 20,
+        backgroundColor: 'red',
+        position: 'absolute',
+        top: -5,
+        right: -5,
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    notificationText: {
+        color: 'white',
+        fontSize: 12,
+        fontWeight: 'bold'
     }
 });
