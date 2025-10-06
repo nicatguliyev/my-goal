@@ -7,21 +7,26 @@ import FilterModal from './FilterModal';
 
 export default function App() {
   return (
-    <SafeAreaView>
-    <View style={styles.container}>
-      {/* <SearchTextinput /> */}
-      <FilterModal />
-      <StatusBar style="auto" />
-    </View>
-    </SafeAreaView>
- 
+    <SafeAreaProvider>
+      <SafeAreaView style = {{flex: 1, backgroundColor: "transparent"}} edges={["top", "left", "right", "bottom"]}>
+        <View style={styles.container}>
+          <GoalsScreen />
+          <StatusBar style="auto" />
+        </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
+
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16
-   // flex: 1,
+     flex: 1,
+     padding: 16,
+     backgroundColor: "transparent",
+    //  height: "100%"
+    // flex: 1,
     // backgroundColor: '#fff',
     // alignItems: 'center',
     // justifyContent: 'center',

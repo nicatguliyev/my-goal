@@ -2,6 +2,8 @@ import React from "react";
 import {Modal, StyleSheet, Button, View} from "react-native";
 import SearchTextinput from "./SearchTextInput";
 import { useState } from "react";
+import FilterModal from "./FilterModal";
+import { FAB } from "react-native-paper";
 
 const GoalsScreen = () => {
 
@@ -9,20 +11,22 @@ const GoalsScreen = () => {
 
     return(
         <>
-        <SearchTextinput modalVisible = {modalVisible}/>
-        <Button title="Open Modal" onPress={() => {setModalVisible(true)}}/>
-        {/* <Modal animationType="slide" transparent= {true} visible = {modalVisible} onRequestClose={() => setModalVisible(false)}>
-
-            <View style = {{alignItems: "center", justifyContent: "center", backgroundColor: "#7E7E7E49", width: "100%", height: "100%"}}>
-              <View style = {{height: 100, width: 200, backgroundColor: "green", display: "flex", flexDirection: "column", justifyContent: "flex-end"}}>
-                <Button title="CLOSE"  onPress={() => {setModalVisible(false)}} />
-              </View>
-            </View>
-
-        </Modal> */}
+        <SearchTextinput setModalVisible = {setModalVisible}/>
+        <Modal animationType="fade" transparent= {true} visible = {modalVisible} onRequestClose={() => setModalVisible(false)}>
+            <FilterModal setModalVisible={setModalVisible}/>
+        </Modal>
+        <FAB icon="plus" label="Add" style = {styles.fab} />
         </>
     )
 }
 
 export default GoalsScreen;
+
+const styles = StyleSheet.create({
+   fab: {
+    position: "absolute",
+    right: 16,
+    bottom: 16
+   }
+});
 
