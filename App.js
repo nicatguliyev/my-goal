@@ -6,6 +6,7 @@ import GoalsScreen from './GoalsScreen';
 import FilterModal from './FilterModal';
 import * as NavigationBar from 'expo-navigation-bar';
 import { useEffect } from 'react';
+import CategoryListModal from './CategoryListModal';
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
       <SafeAreaView style = {{flex: 1, backgroundColor: "white" }} edges={["top", "bottom"]}>
         <View style={styles.container}>
           <GoalsScreen />
+          {/* <CategoryListModal /> */}
           <StatusBar style="auto" />
         </View>
       </SafeAreaView>

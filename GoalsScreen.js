@@ -4,6 +4,7 @@ import SearchTextinput from "./SearchTextInput";
 import { useState } from "react";
 import FilterModal from "./FilterModal";
 import { FAB } from "react-native-paper";
+import CategoryListModal from "./CategoryListModal";
 
 const GoalsScreen = () => {
 
@@ -13,7 +14,7 @@ const GoalsScreen = () => {
         <>
         <SearchTextinput setModalVisible = {setModalVisible}/>
         <Modal animationType="fade" transparent= {true} visible = {modalVisible} onRequestClose={() => setModalVisible(false)}>
-            <FilterModal setModalVisible={setModalVisible}/>
+            <CategoryListModal setModalVisible={setModalVisible}/>
         </Modal>
         <FAB icon="plus" label="Add" style = {styles.fab} />
         </>
