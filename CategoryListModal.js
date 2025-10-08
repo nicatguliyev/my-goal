@@ -12,34 +12,33 @@ const CategoryListModal = ({ setModalVisibility }) => {
             <View style={{ backgroundColor: "white", paddingHorizontal: 0, borderRadius: 10 }}>
                 <Pressable style={styles.listItemBtn} onPress={() => { console.log("test") }}>
                     <View style={styles.cateGoryListView}>
-                        <View style={{ flexDirection: "row", alignItems: "center", flex: 1, backgroundColor: "", paddingLeft: 6 }}>
-                            <Ionicons name="search" size={12} color="#709ab8" />
+                        <View style={{ flexDirection: "row", alignItems: "center", flex: 1, backgroundColor: "", paddingLeft: 12 }}>
+                            <Ionicons name="search" size={28} color="grey" />
                             <Text style={styles.listItemText}>Work</Text>
                         </View>
-                        <Checkbox />
+                        <Checkbox  color="green" uncheckedColor="grey"  status="checked"/>
                     </View>
                 </Pressable>
                 <Pressable onPress={() => { console.log("test") }} style={styles.listItemBtn}>
                     <View style={styles.cateGoryListView}>
-                        <View style={{ flexDirection: "row", alignItems: "center", flex: 1, backgroundColor: "", paddingLeft: 6 }}>
-                            <Ionicons name="search" size={30} color="#709ab8" />
+                        <View style={{ flexDirection: "row", alignItems: "center", flex: 1, backgroundColor: "", paddingLeft: 12 }}>
+                            <Ionicons name="search" size={28} color="grey" />
                             <Text style={styles.listItemText}>Work</Text>
                         </View>
-                        <Checkbox  style = {{paddingHorizontal: 0}}/>
+                        <Checkbox  style = {{paddingHorizontal: 10}}/>
                     </View>
 
                 </Pressable>
 
-                <Pressable onPress={() => { console.log("test") }} style={styles.listItemBtn}>
-                    <View style={styles.cateGoryListView}>
-                        <View style={{ flexDirection: "row", alignItems: "center", flex: 1, backgroundColor: "", paddingLeft: 6 }}>
-                            <Ionicons name="search" size={30} color="#709ab8" />
-                            <Text style={styles.listItemText}>Work</Text>
-                        </View>
-                        <Checkbox />
-                    </View>
+                <View style = {styles.buttonsView}>
+                        <Pressable style={({ pressed }) => [styles.applyButton, pressed && styles.applybuttonPressed]}>
+                        <Text style = {{color: "white", fontWeight: "bold"}}>Apply</Text>
+                    </Pressable>
 
-                </Pressable>
+                    <Pressable style={({ pressed }) => [styles.closeBtn, pressed && styles.closeBtnPressed]}>
+                        <Text style = {{color: "white", fontWeight: "bold"}}>Close</Text>
+                    </Pressable>
+                </View>
 
             </View>
 
@@ -58,17 +57,47 @@ const styles = StyleSheet.create({
     },
 
     listItemText: {
-        fontSize: 18,
-        marginLeft: 12,
-        fontWeight: "500"
+        fontSize: 16,
+        marginLeft: 10,
+        fontWeight: "500",
+        color: "grey"
     },
 
     listItemBtn: {
         paddingVertical: 10,
         borderBottomColor: 'grey',
-        borderBottomWidth: 1
+        borderBottomWidth: 0.3
+    },
+
+    buttonsView: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-around",
+        paddingVertical: 12, 
+        paddingTop: 25,
+        paddingHorizontal: 12
+    },
+
+        applyButton: {
+        backgroundColor: "green",
+        paddingHorizontal: 40,
+        paddingVertical: 15,
+        borderRadius: 10
+    },
+    closeBtn: {
+        backgroundColor: "red",
+        paddingHorizontal: 40,
+        paddingVertical: 15,
+        borderRadius: 10
+    },
+    applybuttonPressed: {
+        backgroundColor: "green",
+        opacity: 0.6,
+        borderRadius: 10
+    },
+    closeBtnPressed: {
+        backgroundColor: "red",
+        opacity: 0.6,
+        borderRadius: 10
     }
-
-
-
 });
