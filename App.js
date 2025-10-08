@@ -18,12 +18,6 @@ export default function App() {
       <SafeAreaView style = {{flex: 1, backgroundColor: "white" }} edges={["top", "bottom"]}>
         <View style={styles.container}>
           <GoalsScreen />
-          {/* <CategoryListModal /> */}
-          {/* <CategoryListItem /> */}
-          {/* <CustomButton backgroundColor = "red" borderRadius = {50}/> */}
-          {/* <CustomButton  backgroundColor = "red" borderRadius = {10} textColor = "white" fontWeight
-                     = "bold" title = "Apply"/> */}
-                
           <StatusBar style="auto" />
         </View>
       </SafeAreaView>

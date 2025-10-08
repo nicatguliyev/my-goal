@@ -10,7 +10,7 @@ const CategoryListItem = () => {
         <>
             <Pressable style={styles.listItemBtn} onPress={() => { console.log("test") }}>
                 <View style={styles.cateGoryListView}>
-                    <View style={{ flexDirection: "row", alignItems: "center", flex: 1, backgroundColor: "", paddingLeft: 12 }}>
+                    <View style={styles.row}>
                         <Ionicons name="search" size={28} color="grey" />
                         <Text style={styles.listItemText}>Work</Text>
                     </View>
@@ -21,12 +21,11 @@ const CategoryListItem = () => {
     );
 }
 
-
 export default CategoryListItem;
 
 const styles = StyleSheet.create({
 
-        cateGoryListView: {
+    cateGoryListView: {
         flexDirection: "row",
         alignItems: "center"
     },
@@ -43,4 +42,12 @@ const styles = StyleSheet.create({
         borderBottomColor: 'grey',
         borderBottomWidth: 0.3
     },
+
+    row: {
+        flexDirection: "row",
+        alignItems: "center",
+        flex: 1,
+        backgroundColor: "",
+        paddingLeft: 12
+    }
 });
