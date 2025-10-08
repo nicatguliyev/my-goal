@@ -2,6 +2,8 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { Checkbox } from "react-native-paper";
+import CategoryListItem from "./CategoryListItem";
+import CustomButton from "./CustomButton";
 
 
 const CategoryListModal = ({ setModalVisibility }) => {
@@ -10,34 +12,25 @@ const CategoryListModal = ({ setModalVisibility }) => {
     return (
         <View style={{ backgroundColor: "grey", width: "100%", height: "100%", justifyContent: "center", paddingHorizontal: 16 }}>
             <View style={{ backgroundColor: "white", paddingHorizontal: 0, borderRadius: 10 }}>
-                <Pressable style={styles.listItemBtn} onPress={() => { console.log("test") }}>
-                    <View style={styles.cateGoryListView}>
-                        <View style={{ flexDirection: "row", alignItems: "center", flex: 1, backgroundColor: "", paddingLeft: 12 }}>
-                            <Ionicons name="search" size={28} color="grey" />
-                            <Text style={styles.listItemText}>Work</Text>
-                        </View>
-                        <Checkbox  color="green" uncheckedColor="grey"  status="checked"/>
-                    </View>
-                </Pressable>
-                <Pressable onPress={() => { console.log("test") }} style={styles.listItemBtn}>
-                    <View style={styles.cateGoryListView}>
-                        <View style={{ flexDirection: "row", alignItems: "center", flex: 1, backgroundColor: "", paddingLeft: 12 }}>
-                            <Ionicons name="search" size={28} color="grey" />
-                            <Text style={styles.listItemText}>Work</Text>
-                        </View>
-                        <Checkbox  style = {{paddingHorizontal: 10}}/>
-                    </View>
 
-                </Pressable>
+                <CategoryListItem />
+                <CategoryListItem />
+                <CategoryListItem />
+                <CategoryListItem />
 
-                <View style = {styles.buttonsView}>
-                        <Pressable style={({ pressed }) => [styles.applyButton, pressed && styles.applybuttonPressed]}>
-                        <Text style = {{color: "white", fontWeight: "bold"}}>Apply</Text>
+                <View style={styles.buttonsView}>
+                    {/* <Pressable style={({ pressed }) => [styles.applyButton, pressed && styles.applybuttonPressed]}>
+                        <Text style={styles.buttonText}>Apply</Text>
                     </Pressable>
 
                     <Pressable style={({ pressed }) => [styles.closeBtn, pressed && styles.closeBtnPressed]}>
-                        <Text style = {{color: "white", fontWeight: "bold"}}>Close</Text>
-                    </Pressable>
+                        <Text style={styles.buttonText}>Close</Text>
+                    </Pressable> */}
+
+                    <CustomButton  backgroundColor = "red" borderRadius = {10} textColor = "white" fontWeight
+                     = "bold" title = "Apply"/>
+                     <CustomButton  backgroundColor = "green" borderRadius = {10} textColor = "white" fontWeight
+                     = "bold" title = "Close"/>
                 </View>
 
             </View>
@@ -73,12 +66,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-around",
-        paddingVertical: 12, 
+        paddingVertical: 12,
         paddingTop: 25,
         paddingHorizontal: 12
     },
 
-        applyButton: {
+    applyButton: {
         backgroundColor: "green",
         paddingHorizontal: 40,
         paddingVertical: 15,
@@ -99,5 +92,9 @@ const styles = StyleSheet.create({
         backgroundColor: "red",
         opacity: 0.6,
         borderRadius: 10
+    }, 
+    buttonText:  {
+        color: "white",
+        fontWeight: "bold"
     }
 });

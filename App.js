@@ -7,14 +7,11 @@ import FilterModal from './FilterModal';
 import * as NavigationBar from 'expo-navigation-bar';
 import { useEffect } from 'react';
 import CategoryListModal from './CategoryListModal';
+import CategoryListItem from './CategoryListItem';
+import CustomButton from './CustomButton';
 
 
 export default function App() {
-
-  // useEffect(() => {
-  //   NavigationBar.setBackgroundColorAsync("red");
-  // }, []);
-
 
   return (
     <SafeAreaProvider>
@@ -22,11 +19,15 @@ export default function App() {
         <View style={styles.container}>
           <GoalsScreen />
           {/* <CategoryListModal /> */}
+          {/* <CategoryListItem /> */}
+          {/* <CustomButton backgroundColor = "red" borderRadius = {50}/> */}
+          {/* <CustomButton  backgroundColor = "red" borderRadius = {10} textColor = "white" fontWeight
+                     = "bold" title = "Apply"/> */}
+                
           <StatusBar style="auto" />
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
-
 
   );
 }
@@ -38,3 +39,5 @@ const styles = StyleSheet.create({
      backgroundColor: "white",
   },
 });
+
+
