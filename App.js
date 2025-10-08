@@ -4,18 +4,30 @@ import SearchTextinput from './SearchTextInput';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import GoalsScreen from './GoalsScreen';
 import FilterModal from './FilterModal';
+import * as NavigationBar from 'expo-navigation-bar';
+import { useEffect } from 'react';
+import CategoryListModal from './CategoryListModal';
+import CategoryListItem from './CategoryListItem';
+import CustomButton from './CustomButton';
+
 
 export default function App() {
+
   return (
     <SafeAreaProvider>
-      <SafeAreaView style = {{flex: 1, backgroundColor: "transparent"}} edges={["top", "left", "right", "bottom"]}>
+      <SafeAreaView style = {{flex: 1, backgroundColor: "white" }} edges={["top", "bottom"]}>
         <View style={styles.container}>
           <GoalsScreen />
+          {/* <CategoryListModal /> */}
+          {/* <CategoryListItem /> */}
+          {/* <CustomButton backgroundColor = "red" borderRadius = {50}/> */}
+          {/* <CustomButton  backgroundColor = "red" borderRadius = {10} textColor = "white" fontWeight
+                     = "bold" title = "Apply"/> */}
+                
           <StatusBar style="auto" />
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
-
 
   );
 }
@@ -24,11 +36,8 @@ const styles = StyleSheet.create({
   container: {
      flex: 1,
      padding: 16,
-     backgroundColor: "transparent",
-    //  height: "100%"
-    // flex: 1,
-    // backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+     backgroundColor: "white",
   },
 });
+
+

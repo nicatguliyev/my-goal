@@ -40,7 +40,31 @@ const FilterModal = ({ setModalVisible }) => {
 
     return (
         <View style={styles.modalView}>
-            <View style={styles.categoriesView}>
+
+          
+            <Pressable style = {styles.listItemBtn} onPress={() => {console.log("test")}}>
+            <View style = {styles.cateGoryListView}>
+              <View style = {{flexDirection: "row", alignItems: "center", flex: 1, backgroundColor: "white"}}>
+               <Ionicons name="search" size={30} color="#709ab8"  />
+              <Text style = {styles.listItemText}>Work</Text>
+              </View>
+              <Checkbox />
+            </View>
+            {/* <View style = {{backgroundColor: 'grey', height: 1,}} /> */}
+        </Pressable>
+                <Pressable onPress={() => {console.log("test")}} style= {styles.listItemBtn}>
+            <View style = {styles.cateGoryListView}>
+              <View style = {{flexDirection: "row", alignItems: "center", flex: 1, backgroundColor: "white"}}>
+               <Ionicons name="search" size={30} color="#709ab8"  />
+              <Text style = {styles.listItemText}>Work</Text>
+              </View>
+              <Checkbox />
+            </View>
+            {/* <View style = {{backgroundColor: 'grey', height: 1, width: "100%"}} /> */}
+        </Pressable>
+
+
+            {/* <View style={styles.categoriesView}>
                 {categoryData.map((item) => (
                     <View style={{ flexDirection: "row", alignItems: "center" }}>
                         <Checkbox key={item.id} status={item.selected ? 'checked' : 'unchecked'} onPress={() => { toggleSelected(item.id) }} />
@@ -57,7 +81,9 @@ const FilterModal = ({ setModalVisible }) => {
                         <Text style = {{color: "white", fontWeight: "bold"}}>Close</Text>
                     </Pressable>
                 </View>
-            </View>
+            </View> */}
+
+
         </View>
     );
 }
