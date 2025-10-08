@@ -1,21 +1,88 @@
 import React from "react";
-import {Text, View, Modal, StyleSheet} from 'react-native';
-import { useState } from "react";
-import { Checkbox } from "react-native-paper";
+import { Text, View, Modal, StyleSheet, Button, Pressable } from 'react-native';
+import { useState, useEffect, useCallback } from "react";
+import { Provider as PaperProvider, Checkbox} from "react-native-paper";
 
 
-const FilterModal = () => {
+const FilterModal = ({ setModalVisible }) => {
 
+    const [categoryData, setCategoryData] = useState(
+        [
+            {
+                id: 1, label: "Work", selected: false
+            },
+            {
+                id: 2, label: "Study", selected: false
+            },
+            {
+                id: 3, label: "Aquarium", selected: false
+            },
+            {
+                id: 4, label: "Gym", selected: false
+            },
+            {
+                id: 5, label: "Movie", selected: false
+            },
+        ]
+    );
 
-    return(
-        <View style = {styles.modalView}>
+    const handleApply = () => {
+        console.log(categoryData);
+    }
 
-            <View style = {styles.categoriesView}>
+    const toggleSelected = useCallback((id) => {
+        setCategoryData(prev =>
+            prev.map(item =>
+                item.id === id ? { ...item, selected: !item.selected } : item
+            )
+        );
+    }, []);
 
-                <Checkbox status="checked" />
-                <Text>ITEM 1</Text>
+    return (
+        <View style={styles.modalView}>
 
+          
+            <Pressable style = {styles.listItemBtn} onPress={() => {console.log("test")}}>
+            <View style = {styles.cateGoryListView}>
+              <View style = {{flexDirection: "row", alignItems: "center", flex: 1, backgroundColor: "white"}}>
+               <Ionicons name="search" size={30} color="#709ab8"  />
+              <Text style = {styles.listItemText}>Work</Text>
+              </View>
+              <Checkbox />
             </View>
+            {/* <View style = {{backgroundColor: 'grey', height: 1,}} /> */}
+        </Pressable>
+                <Pressable onPress={() => {console.log("test")}} style= {styles.listItemBtn}>
+            <View style = {styles.cateGoryListView}>
+              <View style = {{flexDirection: "row", alignItems: "center", flex: 1, backgroundColor: "white"}}>
+               <Ionicons name="search" size={30} color="#709ab8"  />
+              <Text style = {styles.listItemText}>Work</Text>
+              </View>
+              <Checkbox />
+            </View>
+            {/* <View style = {{backgroundColor: 'grey', height: 1, width: "100%"}} /> */}
+        </Pressable>
+
+
+            {/* <View style={styles.categoriesView}>
+                {categoryData.map((item) => (
+                    <View style={{ flexDirection: "row", alignItems: "center" }}>
+                        <Checkbox key={item.id} status={item.selected ? 'checked' : 'unchecked'} onPress={() => { toggleSelected(item.id) }} />
+                        <Text style={styles.labelText}>{item.label}</Text>
+                    </View>
+                ))}
+                <View style={styles.seperatorView} />
+                <View style={styles.buttonsView}>
+                    <Pressable style={({ pressed }) => [styles.applyButton, pressed && styles.applybuttonPressed]} onPress={handleApply}>
+                        <Text style = {{color: "white", fontWeight: "bold"}}>Apply</Text>
+                    </Pressable>
+
+                    <Pressable style={({ pressed }) => [styles.closeBtn, pressed && styles.closeBtnPressed]} onPress={() => { setModalVisible(false) }}>
+                        <Text style = {{color: "white", fontWeight: "bold"}}>Close</Text>
+                    </Pressable>
+                </View>
+            </View> */}
+
 
         </View>
     );
@@ -28,15 +95,57 @@ const styles = StyleSheet.create({
     modalView: {
         width: "100%",
         height: "100%",
-        backgroundColor: "#7E7E7E49",
+        backgroundColor: "#adadad36",
         justifyContent: "center",
         alignItems: "center"
     },
     categoriesView: {
-        // width: "",
+        width: "80%",
         marginHorizontal: 36,
         padding: 12,
-        backgroundColor: "green"
+        backgroundColor: "lightgrey",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        columnGap: 20,
+        rowGap: 20,
+        borderRadius: 20,
+    },
+
+    labelText: {
+        fontSize: 20,
+        // color: "white"
+    },
+    seperatorView: {
+        width: "100%",
+        backgroundColor: "grey",
+        height: 1
+    },
+    buttonsView: {
+        width: "100%",
+        flexDirection: "row",
+        justifyContent: "space-around"
+    },
+    applyButton: {
+        backgroundColor: "green",
+        paddingHorizontal: 30,
+        paddingVertical: 15,
+        borderRadius: 10
+    },
+    closeBtn: {
+        backgroundColor: "red",
+        paddingHorizontal: 30,
+        paddingVertical: 15,
+        borderRadius: 10
+    },
+    applybuttonPressed: {
+        backgroundColor: "green",
+        opacity: 0.6,
+        borderRadius: 10
+    },
+    closeBtnPressed: {
+        backgroundColor: "red",
+        opacity: 0.6,
+        borderRadius: 10
     }
 
 });

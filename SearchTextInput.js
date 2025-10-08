@@ -2,7 +2,7 @@ import React from "react";
 import { TextInput, StyleSheet, View, Pressable, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const SearchTextinput = ({modalVisible}) => {
+const SearchTextinput = ({setModalVisible}) => {
 
     return (
         <View style={styles.inputContainer}>
@@ -15,7 +15,7 @@ const SearchTextinput = ({modalVisible}) => {
                     <Ionicons name="close" size={24} color="#709ab8" />
                 </Pressable>
             </View>
-            <Pressable style={({ pressed }) => [styles.filterButton, pressed && styles.filteredButtonPressed]}>
+            <Pressable style={({ pressed }) => [styles.filterButton, pressed && styles.filteredButtonPressed]} onPress={() => {setModalVisible(true)}}>
                 <View style={styles.notificationView}>
                     <Text style={styles.notificationText}>3</Text>
                 </View>
