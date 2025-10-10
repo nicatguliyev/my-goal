@@ -6,6 +6,8 @@ import CategoryListItem from "./CategoryListItem";
 
 const BottomSheet = ({ modalVisible, setModalVisible }) => {
 
+
+
     const [categories, setCategories] = useState(
         [
             {
@@ -83,8 +85,12 @@ const BottomSheet = ({ modalVisible, setModalVisible }) => {
         ]
     );
 
+    const onPressItem = (id) => {
+        console.log("Pressed item ID: " + id);
+    }
+
     const renderItem = ({ item }) => (
-        <CategoryListItem name={item.name} icon={item.icon} checked={item.selected} />
+        <CategoryListItem name={item.name} icon={item.icon} checked={item.selected} onPress = {() => onPressItem(item.id)} />
     )
 
     return (
@@ -130,7 +136,6 @@ const styles = StyleSheet.create({
         height: "100%",
         backgroundColor: "white",
         justifyContent: "space-between",
-        // alignItems: 'flex-end',
         paddingTop: 50,
     },
     titleContainer: {
@@ -160,10 +165,7 @@ const styles = StyleSheet.create({
         opacity: 0.75
     },
     closeBtn: {
-        // marginRight: 16,
-        //backgroundColor: "#527187",
         padding: 10,
-        //borderRadius: 24,
         position: 'absolute',
         right: 6
     },

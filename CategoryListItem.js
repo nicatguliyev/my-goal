@@ -4,11 +4,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { Checkbox } from "react-native-paper";
 
 
-const CategoryListItem = ({name , icon, checked}) => {
+const CategoryListItem = ({name , icon, checked, onPress}) => {
 
     return (
         <>
-            <Pressable style={styles.listItemBtn} onPress={() => { console.log("test") }}>
+            <Pressable style={styles.listItemBtn} onPress={onPress}>
                 <View style={styles.cateGoryListView}>
                     <View style={styles.row}>
                         <Ionicons name={icon} size={28} color="grey" />
