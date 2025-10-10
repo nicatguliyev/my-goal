@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Modal, View, Text, Pressable, StyleSheet, FlatList} from 'react-native';
+import { Modal, View, Text, Pressable, StyleSheet, FlatList } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
+import CategoryListItem from "./CategoryListItem";
 
 
 const BottomSheet = ({ modalVisible, setModalVisible }) => {
@@ -9,29 +10,81 @@ const BottomSheet = ({ modalVisible, setModalVisible }) => {
         [
             {
                 id: 1,
-                icon: "work",
+                icon: "briefcase-outline",
                 name: "Work",
                 selected: false
             },
             {
                 id: 2,
-                icon: "study",
+                icon: "school-outline",
                 name: "Study",
                 selected: false
             },
             {
                 id: 3,
-                icon: "gym",
+                icon: "barbell-outline",
                 name: "Gym",
                 selected: false
-            }
+            },
+            {
+                id: 4,
+                icon: "medkit-outline",
+                name: "Health",
+                selected: true
+            },
+            {
+                id: 5,
+                icon: "paw-outline",
+                name: "Pet",
+                selected: false
+            },
+            {
+                id: 6,
+                icon: "calendar-outline",
+                name: "Meeting",
+                selected: false
+            },
+            {
+                id: 7,
+                icon: "airplane-outline",
+                name: "Trip",
+                selected: false
+            },
+            {
+                id: 8,
+                icon: "mail-outline",
+                name: "Email",
+                selected: false
+            },
+            {
+                id: 9,
+                icon: "car-outline",
+                name: "Car",
+                selected: true
+            },
+            {
+                id: 10,
+                icon: "wallet-outline",
+                name: "Wallet",
+                selected: false
+            },
+            {
+                id: 11,
+                icon: "fish-outline",
+                name: "Aquarium",
+                selected: false
+            },
+            {
+                id: 12,
+                icon: "gift-outline",
+                name: "Gift",
+                selected: false
+            },
         ]
     );
 
-    const renderItem = ({item}) => (
-        <View>
-            <Text>{item.name}</Text>
-        </View>
+    const renderItem = ({ item }) => (
+        <CategoryListItem name={item.name} icon={item.icon} checked={item.selected} />
     )
 
     return (
@@ -42,16 +95,16 @@ const BottomSheet = ({ modalVisible, setModalVisible }) => {
                         <View style={styles.titleContainer}>
                             <Text style={styles.title}>CATEGORIES</Text>
                             <Pressable style={({ pressed }) => pressed ? [styles.closeBtn, styles.closeBtnPressed] : styles.closeBtn} onPress={() => setModalVisible(false)}>
-                                <Ionicons name="close" size={26} color="white" />
+                                <Ionicons name="close" size={26} color="#527187" />
                             </Pressable>
                         </View>
-                        <View style = {{backgroundColor: "red", flex: 1}}>
-                           <FlatList
-                             data={categories}
-                             renderItem={renderItem}
-                             keyExtractor={(item) => item.id}
-                             ListEmptyComponent={<Text>There is no category</Text>}
-                           />
+                        <View style={{ backgroundColor: "rgba(255, 255, 255, 1)", flex: 1, padding: 10 }}>
+                            <FlatList
+                                data={categories}
+                                renderItem={renderItem}
+                                keyExtractor={(item) => item.id}
+                                ListEmptyComponent={<Text>There is no category</Text>}
+                            />
                         </View>
                         <Pressable style={({ pressed }) => pressed ? [styles.applyBtn, styles.applyBtnPressed] : styles.applyBtn} onPress={() => { console.log("TEST") }}>
                             <Text style={styles.applyTxt}>Apply</Text>
@@ -85,7 +138,9 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: 'center',
         paddingVertical: 10,
-        backgroundColor: "white"
+        backgroundColor: "white",
+        borderBottomColor: "#527187",
+        borderBottomWidth: 1
     },
 
     title: {
@@ -106,11 +161,11 @@ const styles = StyleSheet.create({
     },
     closeBtn: {
         // marginRight: 16,
-        backgroundColor: "#527187",
+        //backgroundColor: "#527187",
         padding: 10,
-        borderRadius: 24,
+        //borderRadius: 24,
         position: 'absolute',
-        right: 16
+        right: 6
     },
     closeBtnPressed: {
         opacity: 0.75

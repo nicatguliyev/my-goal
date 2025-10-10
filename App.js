@@ -20,6 +20,7 @@ export default function App() {
         <View style={styles.container}>
           <GoalsScreen />
           {/* <BottomSheet /> */}
+          {/* <CategoryListItem  name = "Search" icon = "search" checked={true}/> */}
           <StatusBar style="auto" />
         </View>
       </SafeAreaView>

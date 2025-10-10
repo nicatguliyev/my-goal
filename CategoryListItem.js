@@ -4,17 +4,17 @@ import { Ionicons } from "@expo/vector-icons";
 import { Checkbox } from "react-native-paper";
 
 
-const CategoryListItem = () => {
+const CategoryListItem = ({name , icon, checked}) => {
 
     return (
         <>
             <Pressable style={styles.listItemBtn} onPress={() => { console.log("test") }}>
                 <View style={styles.cateGoryListView}>
                     <View style={styles.row}>
-                        <Ionicons name="search" size={28} color="grey" />
-                        <Text style={styles.listItemText}>Work</Text>
+                        <Ionicons name={icon} size={28} color="grey" />
+                        <Text style={styles.listItemText}>{name}</Text>
                     </View>
-                    <Checkbox color="green" uncheckedColor="grey" status="checked" />
+                    <Checkbox color="green" uncheckedColor="grey" status={checked ? "checked" : "unchecked"} />
                 </View>
             </Pressable>
         </>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 
     cateGoryListView: {
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
     },
 
     listItemText: {
@@ -39,8 +39,11 @@ const styles = StyleSheet.create({
 
     listItemBtn: {
         paddingVertical: 10,
-        borderBottomColor: 'grey',
-        borderBottomWidth: 0.3
+        borderColor: '#5271874b',
+        borderWidth: 1,
+        borderBottomWidth: 1,
+        borderRadius: 10,
+        marginBottom: 10
     },
 
     row: {
