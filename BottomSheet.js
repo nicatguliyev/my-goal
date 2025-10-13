@@ -6,7 +6,7 @@ import CategoryListItem from "./CategoryListItem";
 
 const BottomSheet = ({ modalVisible, setModalVisible }) => {
 
-
+    const [isItemSelected, setIsItemselected] = useState(false);
 
     const [categories, setCategories] = useState(
         [
@@ -32,7 +32,7 @@ const BottomSheet = ({ modalVisible, setModalVisible }) => {
                 id: 4,
                 icon: "medkit-outline",
                 name: "Health",
-                selected: true
+                selected: false
             },
             {
                 id: 5,
@@ -62,7 +62,7 @@ const BottomSheet = ({ modalVisible, setModalVisible }) => {
                 id: 9,
                 icon: "car-outline",
                 name: "Car",
-                selected: true
+                selected: false
             },
             {
                 id: 10,
@@ -86,7 +86,10 @@ const BottomSheet = ({ modalVisible, setModalVisible }) => {
     );
 
     const onPressItem = (id) => {
-        console.log("Pressed item ID: " + id);
+
+        const next = categories.map(category => category.id === id ? {...category,  selected: !category.selected} : category);
+        setCategories(next);
+    
     }
 
     const renderItem = ({ item }) => (
@@ -155,11 +158,13 @@ const styles = StyleSheet.create({
     },
 
     applyBtn: {
-        width: "100%",
+        // width: "100%",
         justifyContent: 'center',
         alignItems: "center",
         padding: 15,
-        backgroundColor: "#5f8aa9ff"
+        backgroundColor: "#5f8aa9ff",
+        marginHorizontal:12,
+      borderRadius: 10
     },
     applyBtnPressed: {
         opacity: 0.75
