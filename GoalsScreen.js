@@ -6,19 +6,19 @@ import FilterModal from "./FilterModal";
 import { FAB } from "react-native-paper";
 import CategoryListModal from "./CategoryListModal";
 import BottomSheet from "./BottomSheet";
+import AddGaolModal from "./AddGoalModal";
 
 const GoalsScreen = () => {
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [addGoalModalVisible, setAddGoalModalVisible] = useState(false);
 
     return(
         <>
         <SearchTextinput setModalVisible = {setModalVisible}/>
-        {/* <Modal animationType="fade" transparent= {true} visible = {modalVisible} onRequestClose={() => setModalVisible(false)}>
-            <CategoryListModal setModalVisible={setModalVisible}/>
-        </Modal> */}
         <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible} />
-        <FAB icon="plus" label="Add" style = {styles.fab} />
+        <FAB icon="plus" label="Add" style = {styles.fab}  onPress={() => {setAddGoalModalVisible(true)}}/>
+        <AddGaolModal visible = {addGoalModalVisible} />
         </>
     )
 }
