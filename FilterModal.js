@@ -60,30 +60,7 @@ const FilterModal = ({ setModalVisible }) => {
               </View>
               <Checkbox />
             </View>
-            {/* <View style = {{backgroundColor: 'grey', height: 1, width: "100%"}} /> */}
         </Pressable>
-
-
-            {/* <View style={styles.categoriesView}>
-                {categoryData.map((item) => (
-                    <View style={{ flexDirection: "row", alignItems: "center" }}>
-                        <Checkbox key={item.id} status={item.selected ? 'checked' : 'unchecked'} onPress={() => { toggleSelected(item.id) }} />
-                        <Text style={styles.labelText}>{item.label}</Text>
-                    </View>
-                ))}
-                <View style={styles.seperatorView} />
-                <View style={styles.buttonsView}>
-                    <Pressable style={({ pressed }) => [styles.applyButton, pressed && styles.applybuttonPressed]} onPress={handleApply}>
-                        <Text style = {{color: "white", fontWeight: "bold"}}>Apply</Text>
-                    </Pressable>
-
-                    <Pressable style={({ pressed }) => [styles.closeBtn, pressed && styles.closeBtnPressed]} onPress={() => { setModalVisible(false) }}>
-                        <Text style = {{color: "white", fontWeight: "bold"}}>Close</Text>
-                    </Pressable>
-                </View>
-            </View> */}
-
-
         </View>
     );
 }

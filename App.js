@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import CategoryListModal from './CategoryListModal';
 import CategoryListItem from './CategoryListItem';
 import CustomButton from './CustomButton';
+import BottomSheet from './BottomSheet';
 
 
 export default function App() {
@@ -18,6 +19,8 @@ export default function App() {
       <SafeAreaView style = {{flex: 1, backgroundColor: "white" }} edges={["top", "bottom"]}>
         <View style={styles.container}>
           <GoalsScreen />
+          {/* <BottomSheet /> */}
+          {/* <CategoryListItem  name = "Search" icon = "search" checked={true}/> */}
           <StatusBar style="auto" />
         </View>
       </SafeAreaView>
