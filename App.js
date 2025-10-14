@@ -18,7 +18,8 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style = {{flex: 1, backgroundColor: "white" }} edges={["top", "bottom"]}>
         <View style={styles.container}>
-          <GoalsScreen />
+          <CategoryListModal />
+          {/* <GoalsScreen /> */}
           {/* <BottomSheet /> */}
           {/* <CategoryListItem  name = "Search" icon = "search" checked={true}/> */}
           <StatusBar style="auto" />
@@ -32,7 +33,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
      flex: 1,
-     padding: 16,
+    //  padding: 16,
      backgroundColor: "white",
   },
 });
