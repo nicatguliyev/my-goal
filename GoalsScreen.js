@@ -6,7 +6,7 @@ import FilterModal from "./FilterModal";
 import { FAB } from "react-native-paper";
 import CategoryListModal from "./CategoryListModal";
 import BottomSheet from "./BottomSheet";
-import AddGaolModal from "./AddGoalModal";
+import AddGoalModal from "./AddGoalModal";
 
 const GoalsScreen = () => {
 
@@ -18,7 +18,7 @@ const GoalsScreen = () => {
         <SearchTextinput setModalVisible = {setModalVisible}/>
         <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible} />
         <FAB icon="plus" label="Add" style = {styles.fab}  onPress={() => {setAddGoalModalVisible(true)}}/>
-        <AddGaolModal visible = {addGoalModalVisible} />
+        <AddGoalModal visible = {addGoalModalVisible} setVisible = {setAddGoalModalVisible} />
         </>
     )
 }
