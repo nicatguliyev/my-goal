@@ -14,7 +14,7 @@ const AddGoalModal = ({ visible, setVisible }) => {
 
 
                 <View style={styles.container}>
-                    <View style={{ width: "100%", height: 500, backgroundColor: "white" }}>
+                    <View style={{ width: "100%", height: 500, backgroundColor: "white", borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
                         <View style={styles.titleContainer}>
                             <Text style={styles.title}>NEW GOAL</Text>
                             <Pressable style={({ pressed }) => pressed ? [styles.closeBtn, styles.closeBtnPressed] : styles.closeBtn} onPress={() => setVisible(false)}>
@@ -79,7 +79,9 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         backgroundColor: "white",
         borderBottomColor: "#527187",
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
     },
 
     title: {
