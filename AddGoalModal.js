@@ -21,11 +21,14 @@ const AddGoalModal = ({ visible, setVisible }) => {
                                 <Ionicons name="close" size={26} color="#527187" />
                             </Pressable>
                         </View>
-                        <View style={{ backgroundColor: "rgba(255, 255, 255, 1)",   }}></View>
-                        <TextInput placeholder="Enter your goal title" style={styles.titleTextInput} placeholderTextColor={"#6a6a6aff"}/>
+                        <View style={{ backgroundColor: "rgba(255, 255, 255, 1)", }}></View>
+                        <TextInput placeholder="Enter your goal title" style={styles.titleTextInput} placeholderTextColor={"#6a6a6aff"}   />
                         <TextInput placeholder="Enter your goal description" placeholderTextColor={"#6a6a6aff"} style={styles.descriptionTextInput} scrollEnabled={true} multiline={true} numberOfLines={10} />
 
                         <SelectCategoryPicker />
+                        <Pressable style={({ pressed }) => pressed ? [styles.applyBtn, styles.applyBtnPressed] : styles.applyBtn} onPress={() => { console.log("TEST") }}>
+                            <Text style={styles.saveTxt}>Save</Text>
+                        </Pressable>
                     </View>
                 </View>
             </Modal>
@@ -53,17 +56,21 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingVertical: 18,
         fontSize: 18,
-        borderRadius: 10
+        borderRadius: 10,
+        borderColor: "#5f8aa9ff",
+        borderWidth: 1
     },
     descriptionTextInput: {
         backgroundColor: "#dcdcdcff",
         marginHorizontal: 12,
-        marginVertical: 8,
+        marginBottom: 8,
         padding: 10,
         fontSize: 18,
         borderRadius: 10,
-        height: 150,
+        height: 120,
         textAlignVertical: "top",
+        borderColor: "#5f8aa9ff",
+        borderWidth: 1
     },
     titleContainer: {
         width: "100%",
@@ -88,4 +95,21 @@ const styles = StyleSheet.create({
     closeBtnPressed: {
         opacity: 0.75
     },
+    applyBtn: {
+        justifyContent: 'center',
+        alignItems: "center",
+        padding: 15,
+        backgroundColor: "#5f8aa9ff",
+        marginTop: 60,
+        marginHorizontal: 12,
+        borderRadius: 10
+    },
+    applyBtnPressed: {
+        opacity: 0.75
+    },
+    saveTxt: {
+        color: "white",
+        fontSize: 18,
+        fontWeight: "bold"
+    }
 })
