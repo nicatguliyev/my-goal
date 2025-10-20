@@ -87,13 +87,13 @@ const BottomSheet = ({ modalVisible, setModalVisible }) => {
 
     const onPressItem = (id) => {
 
-        const next = categories.map(category => category.id === id ? {...category,  selected: !category.selected} : category);
+        const next = categories.map(category => category.id === id ? { ...category, selected: !category.selected } : category);
         setCategories(next);
-    
+
     }
 
     const renderItem = ({ item }) => (
-        <CategoryListItem name={item.name} icon={item.icon} checked={item.selected} onPress = {() => onPressItem(item.id)} />
+        <CategoryListItem name={item.name} icon={item.icon} checked={item.selected} onPress={() => onPressItem(item.id)} />
     )
 
     return (
@@ -120,7 +120,6 @@ const BottomSheet = ({ modalVisible, setModalVisible }) => {
                         </Pressable>
                     </View>
                 </View>
-
             </Modal>
         </View>
     );
@@ -158,13 +157,12 @@ const styles = StyleSheet.create({
     },
 
     applyBtn: {
-        // width: "100%",
         justifyContent: 'center',
         alignItems: "center",
         padding: 15,
         backgroundColor: "#5f8aa9ff",
-        marginHorizontal:12,
-      borderRadius: 10
+        marginHorizontal: 12,
+        borderRadius: 10
     },
     applyBtnPressed: {
         opacity: 0.75

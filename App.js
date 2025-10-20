@@ -18,6 +18,7 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style = {{flex: 1, backgroundColor: "white" }} edges={["top", "bottom"]}>
         <View style={styles.container}>
+          {/* <CategoryListModal /> */}
           <GoalsScreen />
           {/* <BottomSheet /> */}
           {/* <CategoryListItem  name = "Search" icon = "search" checked={true}/> */}
