@@ -3,7 +3,7 @@ import {Modal, StyleSheet, Button, View, FlatList, Text} from "react-native";
 import {useState} from "react";
 import { Ionicons } from "@expo/vector-icons";
 
-const GoalsList  = () => {
+const GoalsList  = ({keyWord}) => {
 
     const [goalsData, setGoalsData] = useState(
         [
@@ -65,11 +65,17 @@ const GoalsList  = () => {
         ]
     );
 
+    function filterGoalsData(keyWord){
+        if(!keyWord || keyWord.trim() === ""){
+            return goalsData;
+        }
+        return goalsData.filter(goal => goal.title.toLowerCase().includes(keyWord.toLowerCase()));
+    }
     return(
         <View style = {{flex: 1, backgroundColor: "#white"}}>
 
             <FlatList
-                data={goalsData}
+                data={filterGoalsData(keyWord)}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => (
                     <View style={{paddingVertical: 16, paddingHorizontal: 0, borderBottomWidth: 1, borderBottomColor: '#ccc' }}>

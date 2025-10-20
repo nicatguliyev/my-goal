@@ -13,11 +13,12 @@ const GoalsScreen = () => {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [addGoalModalVisible, setAddGoalModalVisible] = useState(false);
+    const [searchKeyword, setSearchKeyword] = useState("");
 
     return(
         <>
-        <SearchTextinput setModalVisible = {setModalVisible}/>
-        <GoalsList />
+        <SearchTextinput setModalVisible = {setModalVisible} setKeyWord = {setSearchKeyword}/>
+        <GoalsList keyWord = {searchKeyword}/>
         <BottomSheet modalVisible={modalVisible} setModalVisible={setModalVisible} />
         <FAB icon="plus" label="Add" style = {styles.fab}  onPress={() => {setAddGoalModalVisible(true)}}/>
         <AddGoalModal visible = {addGoalModalVisible} setVisible = {setAddGoalModalVisible} />
