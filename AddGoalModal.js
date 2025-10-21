@@ -1,12 +1,24 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Modal, Text, View, Pressable, StyleSheet, TextInput } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 import SelectCategoryPicker from "./SelectCategoryPicker";
+import CattegoryListModal from "./CategoryListModal";
 
 
 const AddGoalModal = ({ visible, setVisible }) => {
 
+    const [isCategoryModalVisible, setIsCategoryModalVisible] = useState(false);
+
+
+    useEffect(() => {
+        console.log("CategoryModal is visible)");
+
+        return () => {
+            console.log("CategoryModal is not visible)");
+        }
+
+    })
 
     return (
         <View>
@@ -25,10 +37,11 @@ const AddGoalModal = ({ visible, setVisible }) => {
                         <TextInput placeholder="Enter your goal title" style={styles.titleTextInput} placeholderTextColor={"#6a6a6aff"}   />
                         <TextInput placeholder="Enter your goal description" placeholderTextColor={"#6a6a6aff"} style={styles.descriptionTextInput} scrollEnabled={true} multiline={true} numberOfLines={10} />
 
-                        <SelectCategoryPicker />
+                        <SelectCategoryPicker onPress = {setIsCategoryModalVisible} />
                         <Pressable style={({ pressed }) => pressed ? [styles.applyBtn, styles.applyBtnPressed] : styles.applyBtn} onPress={() => { console.log("TEST") }}>
                             <Text style={styles.saveTxt}>Save</Text>
                         </Pressable>
+                        <CattegoryListModal visible = {isCategoryModalVisible} setVisible = {setIsCategoryModalVisible}/>
                     </View>
                 </View>
             </Modal>

@@ -2,7 +2,9 @@ import React from "react";
 import { TextInput, StyleSheet, View, Pressable, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const SearchTextinput = ({setModalVisible, setKeyWord}) => {
+const SearchTextinput = ({setModalVisible, setKeyWord, keyWord}) => {
+
+   
 
     return (
         <View style={styles.inputContainer}>
@@ -10,8 +12,8 @@ const SearchTextinput = ({setModalVisible, setKeyWord}) => {
                 <View style={styles.searchIconConatiner}>
                     <Ionicons name="search" size={24} color="#709ab8" style={{ top: 10, left: 10 }} />
                 </View>
-                <TextInput placeholder="Search the goal" style={styles.textInput} onChangeText = {(value) => setKeyWord(value)}/>
-                <Pressable style={({ pressed }) => [styles.cancelIconConatiner, pressed && styles.cancelIconConatinerPressed]} onPress={() => { console.log('Cancel') }}>
+                <TextInput placeholder="Search the goal" style={styles.textInput} onChangeText = {(value) => setKeyWord(value)} value = {keyWord}/>
+                <Pressable style={({ pressed }) => [styles.cancelIconConatiner, pressed && styles.cancelIconConatinerPressed]} onPress={() => {setKeyWord("") }}>
                     <Ionicons name="close" size={24} color="#709ab8" />
                 </Pressable>
             </View>

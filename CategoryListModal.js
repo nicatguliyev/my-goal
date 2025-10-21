@@ -4,10 +4,11 @@ import { View, Text, StyleSheet, Pressable, Modal, FlatList } from 'react-native
 import { Checkbox } from "react-native-paper";
 import CategoryListItem from "./CategoryListItem";
 import CustomButton from "./CustomButton";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 
-const CategoryListModal = ({ setModalVisibility }) => {
-
+const CategoryListModal = ({ visible, setVisible }) => {
+    
     const [categories, setCategories] = useState(
         [
             {
@@ -90,17 +91,25 @@ const CategoryListModal = ({ setModalVisibility }) => {
     )
 
     return (
-        <Modal animationType="slide" transparent={true} visible={true}>
-            <View style={{ backgroundColor: "white", width: "100%", height: "100%", justifyContent: "center", paddingHorizontal: 16 }}>
-                <View style={{ backgroundColor: "white", paddingHorizontal: 0, borderRadius: 10 }}>
-                    <FlatList
-                        data={categories}
-                        renderItem={renderItem}
-                        keyExtractor={(item) => item.id}
-                        ListEmptyComponent={<Text>There is no category</Text>}
-                    />
+        <Modal animationType="fade" transparent={true} visible={visible}>
+            <SafeAreaView style={{ flex: 1,}} edges={['bottom', 'top']}>
+                    <View style={styles.titleContainer}>
+                        <Text style={styles.title}>CATEGORIES</Text>
+                        <Pressable style={({ pressed }) => pressed ? [styles.closeBtn, styles.closeBtnPressed] : styles.closeBtn} onPress={() => setVisible(false)}>
+                            <Ionicons name="close" size={26} color="#527187" />
+                        </Pressable>
+                    </View>
+                    <View style={styles.flatListView}>
+                        <FlatList
+                            data={categories}
+                            renderItem={renderItem}
+                            keyExtractor={(item) => item.id}
+                            ListEmptyComponent={<Text>There is no category</Text>}
+                        />
                 </View>
-            </View>
+
+            </SafeAreaView>
+     
         </Modal>
 
     );
@@ -118,4 +127,35 @@ const styles = StyleSheet.create({
         paddingTop: 25,
         paddingHorizontal: 12
     },
+    titleContainer: {
+        width: "100%",
+        flexDirection: "row",
+        justifyContent: 'center',
+        paddingVertical: 20,
+        backgroundColor: "white",
+        borderBottomColor: "#527187",
+        borderBottomWidth: 1,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
+    },
+
+    title: {
+        fontSize: 16,
+        color: "#527187",
+        fontWeight: 'bold'
+    },
+
+    closeBtn: {
+        padding: 10,
+        position: 'absolute',
+        right: 6,
+        top: 8
+    },
+    closeBtnPressed: {
+        opacity: 0.75
+    },
+    flatListView: {
+        backgroundColor: "white", paddingHorizontal: 16, paddingTop: 16, flex: 1
+    }
+
 });
