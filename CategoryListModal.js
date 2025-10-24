@@ -8,7 +8,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 
 const CategoryListModal = ({ visible, setVisible }) => {
-    
+
+    const [selectedItemIndex, setSelectedItemIndex] = useState(null);
+
     const [categories, setCategories] = useState(
         [
             {
@@ -87,29 +89,37 @@ const CategoryListModal = ({ visible, setVisible }) => {
     );
 
     const renderItem = ({ item }) => (
-        <CategoryListItem name={item.name} icon={item.icon} checked={item.selected} />
+        <CategoryListItem name={item.name} icon={item.icon} checked={item.selected} onPress={() => handlePressItem(item.id)} />
     )
+
+    const handlePressItem = (id) => {
+        setSelectedItemIndex(id);
+        setCategories(prev =>
+            prev.map(c => ({ ...c, selected: c.id === id }))
+        );
+        setVisible(false);
+    }
 
     return (
         <Modal animationType="fade" transparent={true} visible={visible}>
-            <SafeAreaView style={{ flex: 1,}} edges={['bottom', 'top']}>
-                    <View style={styles.titleContainer}>
-                        <Text style={styles.title}>CATEGORIES</Text>
-                        <Pressable style={({ pressed }) => pressed ? [styles.closeBtn, styles.closeBtnPressed] : styles.closeBtn} onPress={() => setVisible(false)}>
-                            <Ionicons name="close" size={26} color="#527187" />
-                        </Pressable>
-                    </View>
-                    <View style={styles.flatListView}>
-                        <FlatList
-                            data={categories}
-                            renderItem={renderItem}
-                            keyExtractor={(item) => item.id}
-                            ListEmptyComponent={<Text>There is no category</Text>}
-                        />
+            <SafeAreaView style={{ flex: 1, }} edges={['bottom', 'top']}>
+                <View style={styles.titleContainer}>
+                    <Text style={styles.title}>CATEGORIES</Text>
+                    <Pressable style={({ pressed }) => pressed ? [styles.closeBtn, styles.closeBtnPressed] : styles.closeBtn} onPress={() => setVisible(false)}>
+                        <Ionicons name="close" size={26} color="#527187" />
+                    </Pressable>
+                </View>
+                <View style={styles.flatListView}>
+                    <FlatList
+                        data={categories}
+                        renderItem={renderItem}
+                        keyExtractor={(item) => item.id}
+                        ListEmptyComponent={<Text>There is no category</Text>}
+                    />
                 </View>
 
             </SafeAreaView>
-     
+
         </Modal>
 
     );

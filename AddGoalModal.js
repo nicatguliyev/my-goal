@@ -10,16 +10,6 @@ const AddGoalModal = ({ visible, setVisible }) => {
 
     const [isCategoryModalVisible, setIsCategoryModalVisible] = useState(false);
 
-
-    useEffect(() => {
-        console.log("CategoryModal is visible)");
-
-        return () => {
-            console.log("CategoryModal is not visible)");
-        }
-
-    })
-
     return (
         <View>
             <Modal visible={visible} transparent={true} statusBarTranslucent={true} animationType="slide">
