@@ -3,11 +3,11 @@ import {Text, View, Pressable, StyleSheet} from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 
 
-const SelectCategoryPicker = () => {
+const SelectCategoryPicker = ({onPress}) => {
     
 
     return(
-        <Pressable style={({pressed}) => pressed ? [styles.container, styles.containerPressed] : styles.container}>
+        <Pressable style={({pressed}) => pressed ? [styles.container, styles.containerPressed] : styles.container} onPress={() => onPress(true)}>
             <View>
              <Text style={styles.pickerText}>Select category</Text>
             </View>
